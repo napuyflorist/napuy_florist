@@ -1,0 +1,1473 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>napuy_florist - Marketplace Papan Bunga & Florist Profesional</title>
+    <link rel="shortcut icon" href="image/logonapuy_floristpng.png">
+    <link rel="icon" type="image/png" href="image/logonapuy_floristpng.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Allura&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#FAF9F6',       // Ivory / Warm White
+                            sage: '#8A9A86',     // Muted Sage
+                            sagedark: '#4A5D4E', // Deep Sage
+                            beige: '#C8B195',    // Terracotta Soft / Warm Beige
+                            beigelight: '#F3EDE2',
+                            dark: '#2B2B2B',     // Deep Charcoal
+                            charcoal: '#1A1A1A',
+                            accent: '#D2B48C'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FAF9F6;
+            color: #2B2B2B;
+        }
+        .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+        .font-signature {
+            font-family: 'Allura', 'Great Vibes', cursive;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FAF9F6;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #C8B195;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8A9A86;
+        }
+
+        /* Glassmorphic elements */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(200, 177, 149, 0.25);
+        }
+
+        /* Flower board simulated canvas effect */
+        .flower-board-canvas {
+            background: linear-gradient(135deg, #1E3A8A 0%, #0F172A 100%);
+            border: 12px solid #854D0E;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5), 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .flower-border-decoration {
+            background-image: radial-gradient(#F59E0B 30%, transparent 31%), radial-gradient(#EF4444 30%, transparent 31%);
+            background-position: 0 0, 10px 10px;
+            background-size: 20px 20px;
+        }
+    </style>
+</head>
+<body class="bg-brand-bg text-brand-dark antialiased selection:bg-brand-sage selection:text-white pb-16 md:pb-0">
+
+    <!-- TOP ANNOUNCEMENT BAR -->
+    <div class="bg-brand-sagedark text-white text-xs md:text-sm py-2 px-4 text-center font-medium tracking-wide flex justify-between items-center px-6">
+        <div class="hidden sm:flex items-center gap-4 text-xs opacity-90">
+            <span><i class="fa-solid fa-truck-fast mr-1"></i> Pengiriman Sameday Seluruh Jabodetabek</span>
+            <span><i class="fa-solid fa-camera mr-1"></i> Bukti Foto Pengiriman & Pemasangan</span>
+        </div>
+        <div class="mx-auto sm:mx-0 font-semibold">
+            🎉 Promo Bulan Ini: Diskon 10% Khusus Pemesanan Papan Bunga Grand Opening!
+        </div>
+        <a href="https://wa.me/6288809329129" target="_blank" class="hidden md:inline-flex items-center hover:underline text-xs">
+            <i class="fa-brands fa-whatsapp mr-1 text-emerald-400"></i> CS Online 24Jam
+        </a>
+    </div>
+
+    <!-- MAIN NAVBAR -->
+    <header class="sticky top-0 z-40 glass-card transition-all duration-300 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full overflow-hidden shadow-md group-hover:scale-105 transition-transform bg-white">
+                    <img
+                         src="logonapuy_floristpng.png"
+                         alt="Napuy Florist Logo"
+                         class="w-full h-full object-cover">
+                </div>
+                <div>
+                    <span class="font-signature text-3xl font-normal text-brand-dark block leading-none pt-1">napuy<span class="text-brand-sage">_florist</span></span>
+                    <span class="text-[10px] tracking-widest text-gray-500 uppercase font-semibold block -mt-1">Elegant in Every Bloom</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden lg:flex items-center gap-8 font-medium text-sm text-gray-700">
+                <a href="#kategori" class="hover:text-brand-sage transition-colors">Kategori Momen</a>
+                <a href="#katalog" class="hover:text-brand-sage transition-colors">Katalog Produk</a>
+                <a href="#customizer" class="hover:text-brand-sage transition-colors flex items-center gap-1.5 text-brand-sagedark font-semibold bg-brand-beigelight/60 px-3 py-1 rounded-full border border-brand-beige/40">
+                    <i class="fa-solid fa-wand-magic-sparkles text-brand-sage"></i> Live Simulator
+                </a>
+                <a href="#cara-pesan" class="hover:text-brand-sage transition-colors">Cara Pesan</a>
+                <a href="#testimoni" class="hover:text-brand-sage transition-colors">Testimoni</a>
+                <a href="#jangkauan" class="hover:text-brand-sage transition-colors">Jangkauan</a>
+            </nav>
+
+            <!-- CTA Buttons -->
+            <div class="hidden sm:flex items-center gap-3">
+                <button onclick="openCustomizerModal()" class="px-4 py-2.5 rounded-full border border-brand-sage text-brand-sagedark text-sm font-semibold hover:bg-brand-sage hover:text-white transition-all duration-200">
+                    <i class="fa-solid fa-pen-to-square mr-1.5"></i> Custom Pesanan
+                </button>
+                <a href="https://wa.me/6288809329129?text=Halo%20napuy_florist,%20saya%20ingin%20konsultasi%20pemesanan%20bunga" target="_blank" class="px-5 py-2.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-200 flex items-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Pesan via WA</span>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobileMenuBtn" class="lg:hidden p-2 text-brand-dark focus:outline-none">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-gray-200 px-6 py-4 space-y-3">
+            <a href="#kategori" onclick="toggleMobileMenu()" class="block text-gray-700 font-medium hover:text-brand-sage">Kategori Momen</a>
+            <a href="#katalog" onclick="toggleMobileMenu()" class="block text-gray-700 font-medium hover:text-brand-sage">Katalog Produk</a>
+            <a href="#customizer" onclick="toggleMobileMenu()" class="block text-brand-sagedark font-semibold"><i class="fa-solid fa-wand-magic-sparkles mr-2 text-brand-sage"></i> Live Simulator Ucapan</a>
+            <a href="#cara-pesan" onclick="toggleMobileMenu()" class="block text-gray-700 font-medium hover:text-brand-sage">Cara Pesan</a>
+            <a href="#testimoni" onclick="toggleMobileMenu()" class="block text-gray-700 font-medium hover:text-brand-sage">Testimoni & Real-Pic</a>
+            <a href="#jangkauan" onclick="toggleMobileMenu()" class="block text-gray-700 font-medium hover:text-brand-sage">Area Jangkauan</a>
+            <div class="pt-3 border-t border-gray-100 flex flex-col gap-2">
+                <button onclick="openCustomizerModal(); toggleMobileMenu();" class="w-full py-2.5 rounded-lg border border-brand-sage text-brand-sagedark text-sm font-semibold">
+                    <i class="fa-solid fa-pen-to-square mr-1"></i> Form Kustomisasi Pesanan
+                </button>
+                <a href="https://wa.me/6288809329129?text=Halo%20napuy_florist,%20saya%20ingin%20pesan%20bunga" target="_blank" class="w-full py-2.5 rounded-lg bg-emerald-600 text-white text-center text-sm font-semibold flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> Pesan Cepat via WA
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative overflow-hidden pt-8 pb-16 lg:pt-16 lg:pb-24">
+        <!-- Background Ambient Glow -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-brand-beige/20 blur-[120px] rounded-full -z-10 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Content Column -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-beigelight text-brand-sagedark text-xs md:text-sm font-semibold border border-brand-beige/40">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        Florist & Papan Bunga Terpercaya No. 1 Jabodetabek
+                    </div>
+
+                    <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-brand-dark leading-[1.15]">
+                        Ungkapkan Setiap Momen Berharga dengan <span class="italic font-normal text-brand-sagedark underline decoration-brand-beige/60">Rangkaian Bunga Terbaik</span>
+                    </h1>
+
+                    <p class="text-gray-600 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                        Layanan papan bunga, standing flower, dan florist profesional untuk <strong>Happy Wedding, Grand Opening, Selamat & Sukses, hingga Belasungkawa</strong>. Pengerjaan cepat, hiasan bunga elegan nan berkualitas, dan gratis ongkir wilayah Jabodetabek.
+                    </p>
+
+                    <!-- CTAs -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#kategori" class="w-full sm:w-auto px-8 py-4 rounded-full bg-brand-sagedark text-white font-semibold shadow-lg hover:bg-brand-dark hover:shadow-xl transition-all duration-300 text-center flex items-center justify-center gap-2">
+                            <span>Cari Berdasarkan Momen</span>
+                            <i class="fa-solid fa-arrow-down text-xs"></i>
+                        </a>
+                        <button onclick="openCustomizerModal()" class="w-full sm:w-auto px-8 py-4 rounded-full bg-white text-brand-sagedark font-semibold border border-brand-beige/60 shadow-sm hover:bg-brand-beigelight transition-all duration-300 text-center flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-sliders text-brand-sage"></i>
+                            <span>Kustomisasi Pesanan</span>
+                        </button>
+                    </div>
+
+                    <!-- Trust Stats Badge -->
+                    <div class="pt-8 border-t border-brand-beige/30 grid grid-cols-3 gap-4 max-w-lg mx-auto lg:mx-0">
+                        <div>
+                            <div class="font-serif text-2xl md:text-3xl font-bold text-brand-dark">12.5k+</div>
+                            <div class="text-xs text-gray-500 font-medium">Pesanan Terkirim</div>
+                        </div>
+                        <div>
+                            <div class="font-serif text-2xl md:text-3xl font-bold text-brand-dark">4.9/5.0</div>
+                            <div class="text-xs text-gray-500 font-medium">Rating Kepuasan</div>
+                        </div>
+                        <div>
+                            <div class="font-serif text-2xl md:text-3xl font-bold text-brand-dark">3 Jam</div>
+                            <div class="text-xs text-gray-500 font-medium">Proses Fast-Track</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Hero Visual Cards -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        
+                        <!-- Main Banner Image -->
+                        <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white group">
+                            <img src="image/thumbnail.webp">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex flex-col justify-end p-6 text-white">
+                                <span class="bg-brand-sage text-white text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-md w-max mb-2">Bestseller Wedding</span>
+                                <h3 class="font-serif text-xl font-bold">Papan Bunga Elegance Rustik Deluxe</h3>
+                                <p class="text-xs text-gray-200 mt-1">Kombinasi Mawar Segar, Baby's Breath & Pita Premium</p>
+                            </div>
+                        </div>
+
+                        <!-- Floating Badge Top Right -->
+                        <div class="absolute -top-6 -right-6 bg-white p-3.5 rounded-2xl shadow-xl border border-gray-100 hidden sm:flex items-center gap-3 animate-bounce" style="animation-duration: 3s;">
+                            <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-lg">
+                                <i class="fa-solid fa-camera"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs font-bold text-gray-800">Laporan Foto Lokasi</div>
+                                <div class="text-[10px] text-gray-500">Bukti Bunga Tiba Tepat Waktu</div>
+                            </div>
+                        </div>
+
+                        <!-- Floating Badge Bottom Left -->
+                        <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl border border-gray-100 flex items-center gap-3">
+                            <div class="flex -space-x-2">
+                                <img class="w-8 h-8 rounded-full border-2 border-white object-cover" src="image/thumbnail1.webp" alt="User">
+                                <img class="w-8 h-8 rounded-full border-2 border-white object-cover" src="image/thumbnail2.webp" alt="User">
+                                <img class="w-8 h-8 rounded-full border-2 border-white object-cover" src="image/thumbnail3.webp" alt="User">
+                            </div>
+                            <div>
+                                <div class="flex text-amber-400 text-xs">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                </div>
+                                <div class="text-xs font-bold text-gray-700 mt-0.5">500+ Review B2B Corporate</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- OCCASION NAVIGATION CARDS -->
+    <section id="kategori" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-brand-sagedark text-xs font-bold uppercase tracking-widest bg-brand-beigelight px-3 py-1 rounded-full border border-brand-beige/40">Sesuai Kebutuhan Acara</span>
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-brand-dark mt-3">Pilih Rangkaian Bunga Berdasarkan Momen</h2>
+                <p class="text-gray-600 text-sm md:text-base mt-2">Pencarian cepat untuk membantu Anda menemukan desain papan bunga dan karangan bunga terbaik sesuai protokol acara.</p>
+            </div>
+
+            <!-- Occasion Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Card 1: Wedding -->
+                <div onclick="filterCatalogByOccasion('wedding')" class="group relative rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100 bg-brand-bg">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="image/13napuy_florist400x150.jpg">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        <span class="absolute top-3 left-3 bg-rose-500 text-white text-[10px] font-bold px-2.5 py-1 rounded-full">Romantis & Elegan</span>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center gap-2 text-rose-600 font-bold text-sm mb-1">
+                            <span>💒</span> Wedding & Pernikahan
+                        </div>
+                        <h3 class="font-serif text-lg font-bold text-brand-dark group-hover:text-brand-sage transition-colors">Papan Bunga & Standing Flower</h3>
+                        <p class="text-xs text-gray-500 mt-1">Warna pastel, mewah, pita satin, dan ucapan bahagia untuk mempelai.</p>
+                        <div class="mt-4 flex items-center justify-between text-xs font-semibold text-brand-sagedark">
+                            <span>Mulai Rp 600.000</span>
+                            <span class="group-hover:translate-x-1 transition-transform">Lihat Produk <i class="fa-solid fa-chevron-right text-[10px]"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Condolences -->
+                <div onclick="filterCatalogByOccasion('turut berduka cita')" class="group relative rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100 bg-brand-bg">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="image/8napuy_florist400x120.webp">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        <span class="absolute top-3 left-3 bg-slate-700 text-white text-[10px] font-bold px-2.5 py-1 rounded-full">Prioritas Fast-Track</span>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center gap-2 text-slate-700 font-bold text-sm mb-1">
+                            <span>🕊️</span> Duka Cita & Belasungkawa
+                        </div>
+                        <h3 class="font-serif text-lg font-bold text-brand-dark group-hover:text-brand-sage transition-colors">Papan Bunga Simpati Duka</h3>
+                        <p class="text-xs text-gray-500 mt-1">Desain tenang, sopan, pengerjaan cepat express langsung ke rumah duka.</p>
+                        <div class="mt-4 flex items-center justify-between text-xs font-semibold text-brand-sagedark">
+                            <span>Mulai Rp 600.000</span>
+                            <span class="group-hover:translate-x-2 transition-transform">Lihat Produk <i class="fa-solid fa-chevron-right text-[10px]"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Grand Opening -->
+                <div onclick="filterCatalogByOccasion('selamat & sukses')" class="group relative rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100 bg-brand-bg">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="image/2napuy_florist200x150.webp">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        <span class="absolute top-3 left-3 bg-amber-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-full">Megah & Formal B2B</span>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center gap-2 text-amber-600 font-bold text-sm mb-1">
+                            <span>🎉</span> Grand Opening & Congratulatory
+                        </div>
+                        <h3 class="font-serif text-lg font-bold text-brand-dark group-hover:text-brand-sage transition-colors">Selamat & Sukses Korporat</h3>
+                        <p class="text-xs text-gray-500 mt-1">Warna cerah ceria, logo perusahaan rapi, pengerjaan cepat & profesional.</p>
+                        <div class="mt-4 flex items-center justify-between text-xs font-semibold text-brand-sagedark">
+                            <span>Mulai Rp 550.000</span>
+                            <span class="group-hover:translate-x-1 transition-transform">Lihat Produk <i class="fa-solid fa-chevron-right text-[10px]"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE LIVE BOARD SIMULATOR -->
+    <section id="customizer" class="py-16 bg-brand-beigelight/50 border-y border-brand-beige/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-8 items-center">
+                
+                <!-- Simulator Form Input -->
+                <div class="lg:col-span-5 bg-white p-6 md:p-8 rounded-3xl shadow-lg border border-brand-beige/40">
+                    <div class="flex items-center gap-2 text-brand-sage font-bold text-xs uppercase tracking-wider mb-2">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Live Preview Generator
+                    </div>
+                    <h2 class="font-serif text-2xl md:text-3xl font-bold text-brand-dark mb-2">Simulasi Teks Papan Bunga</h2>
+                    <p class="text-xs text-gray-500 mb-6">Ketik tulisan Anda di bawah untuk melihat perkiraan tampilan ucapan pada papan bunga napuy_florist secara real-time.</p>
+
+                    <form id="simulatorForm" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-gray-700 mb-1">Pilih Jenis Ucapan Header</label>
+                            <select id="simHeader" onchange="updateBoardPreview()" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-brand-sage focus:outline-none">
+                                <option value="HAPPY WEDDING">HAPPY WEDDING</option>
+                                <option value="TURUT BERDUKA CITA">TURUT BERDUKA CITA</option>
+                                <option value="CONGRATULATIONS">CONGRATULATIONS</option>
+                                <option value="SELAMAT & SUKSES">SELAMAT & SUKSES</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-gray-700 mb-1">Nama Penerima / Acara (Baris 1)</label>
+                            <input type="text" id="simTitle" value="Bagas, S.T. & Anisa, S.E." oninput="updateBoardPreview()" placeholder="Contoh: Bagas & Anisa / PT. Maju Bersama" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-brand-sage focus:outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-gray-700 mb-1">Nama Pengirim (Baris 2)</label>
+                            <input type="text" id="simSender" value="Direksi & Staf PT. Sentosa Alam" oninput="updateBoardPreview()" placeholder="Contoh: Direksi & Karyawan PT. XXX" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-brand-sage focus:outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-gray-700 mb-1">Tema Warna Papan</label>
+                            <div class="grid grid-cols-4 gap-2">
+                                <button type="button" onclick="setBoardTheme('navy')" class="h-9 rounded-lg bg-blue-900 border-2 border-amber-400 flex items-center justify-center text-xs text-white font-bold">Navy Gold</button>
+                                <button type="button" onclick="setBoardTheme('maroon')" class="h-9 rounded-lg bg-rose-950 border-2 border-amber-300 flex items-center justify-center text-xs text-white font-bold">Maroon</button>
+                                <button type="button" onclick="setBoardTheme('emerald')" class="h-9 rounded-lg bg-emerald-950 border-2 border-emerald-400 flex items-center justify-center text-xs text-white font-bold">Emerald</button>
+                                <button type="button" onclick="setBoardTheme('dark')" class="h-9 rounded-lg bg-gray-900 border-2 border-gray-400 flex items-center justify-center text-xs text-white font-bold">Duka Cita</button>
+                            </div>
+                        </div>
+
+                        <div class="pt-2">
+                            <button type="button" onclick="sendSimulatedOrderWA()" class="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-md transition-all flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-whatsapp text-lg"></i>
+                                <span>Pesan Papan Seperti Preview Ini</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Simulator Live Visual Board Display -->
+                <div class="lg:col-span-7 flex flex-col items-center justify-center">
+                    <div class="text-xs font-semibold text-gray-500 mb-2 uppercase tracking-widest"><i class="fa-solid fa-eye mr-1"></i> Live Preview Papan Bunga (Standar 200 x 150 cm)</div>
+                    
+                    <!-- Board Outer Frame -->
+                    <div id="boardContainer" class="w-full max-w-xl aspect-[16/10] rounded-2xl p-6 sm:p-8 flex flex-col justify-between items-center text-center shadow-2xl transition-all duration-500 relative border-8 border-amber-800 bg-gradient-to-b from-blue-950 to-slate-900 text-amber-200">                      
+                        
+                        <!-- Top Flowers Ribbon Decoration -->
+                        <div class="w-full flex justify-between items-center px-4 py-2 border-b border-amber-400/30">
+                            <div class="text-xl sm:text-2xl">💐🌸</div>
+                            <div id="previewHeader" class="font-serif font-black tracking-widest text-lg sm:text-2xl text-amber-300 drop-shadow-md">
+                                HAPPY WEDDING
+                            </div>
+                            <div class="text-xl sm:text-2xl">🌸💐</div>
+                        </div>
+
+                        <!-- Middle Receiver Name -->
+                        <div class="my-auto py-4 px-2 w-full">
+                            <div id="previewTitle" class="font-serif font-bold text-xl sm:text-3xl text-white tracking-wide drop-shadow-lg uppercase">
+                                Bagas, S.T. & Anisa, S.E.
+                            </div>
+                            <div class="w-24 h-1 bg-amber-400 mx-auto my-2 rounded-full opacity-70"></div>
+                        </div>
+
+                        <!-- Bottom Sender Name -->
+                        <div class="w-full bg-black/40 py-3 px-4 rounded-xl border border-amber-400/20">
+                            <div class="text-[10px] uppercase tracking-widest text-gray-300 font-semibold mb-0.5">DARI:</div>
+                            <div id="previewSender" class="font-bold text-sm sm:text-lg text-amber-300 tracking-wider uppercase">
+                                Direksi & Staf PT. Sentosa Alam
+                            </div>
+                        </div>
+
+                        <!-- Bottom Feet Stand Decoration -->
+                        <div class="absolute -bottom-10 left-8 w-3 h-12 bg-amber-900 rounded-b-md -z-10 shadow-lg"></div>
+                        <div class="absolute -bottom-10 right-8 w-3 h-12 bg-amber-900 rounded-b-md -z-10 shadow-lg"></div>
+                    </div>
+
+                    <p class="text-center text-xs text-gray-500 mt-12 italic">
+                        *Catatan: Ini adalah estimasi susunan huruf. Florist profesional kami akan merangkai dengan spons & mahkota bunga asli di lokasi.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED PRODUCT SHOWCASE -->
+    <section id="katalog" class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                <div>
+                    <span class="text-brand-sagedark text-xs font-bold uppercase tracking-widest bg-brand-beigelight px-3 py-1 rounded-full border border-brand-beige/40">Katalog Unggulan</span>
+                    <h2 class="font-serif text-3xl md:text-4xl font-bold text-brand-dark mt-2">Pilihan Produk Populer</h2>
+                </div>
+
+                <!-- Filter Tabs -->
+                <div class="flex flex-wrap gap-2 bg-white p-1.5 rounded-2xl border border-brand-beige/40 shadow-sm">
+                    <button onclick="filterCategory('all')" id="tab-all" class="cat-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-brand-sagedark text-white shadow-sm">
+                        Semua Produk
+                    </button>
+                    <button onclick="filterCategory('papan')" id="tab-papan" class="cat-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-gray-600 hover:text-brand-dark transition-all">
+                        Papan Bunga
+                    </button>
+                    <button onclick="filterCategory('standing')" id="tab-standing" class="cat-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-gray-600 hover:text-brand-dark transition-all">
+                        Standing Flower
+                    </button>
+                </div>
+            </div>
+
+            <!-- Search bar within catalog -->
+            <div class="mb-8 relative max-w-md">
+                <input type="text" id="catalogSearch" oninput="searchCatalog()" placeholder="Cari nama bunga atau momen (misal: Wedding, Duka)..." class="w-full pl-10 pr-4 py-2.5 rounded-full border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-brand-sage bg-white shadow-sm">
+                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-gray-400 text-xs"></i>
+            </div>
+
+            <!-- Product Grid Container -->
+            <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Dynamic Javascript Cards will be rendered here -->
+            </div>
+
+            <!-- TAMPILKAN SEMUA PRODUK ACTION CONTAINER -->
+            <div class="mt-12 text-center border-t border-brand-beige/30 pt-8">
+                <button onclick="showAllProductsAction()" class="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-brand-sagedark hover:bg-brand-dark text-white font-bold text-sm shadow-md hover:shadow-xl transition-all duration-300 group">
+                    <i class="fa-solid fa-layer-group text-brand-beige group-hover:rotate-12 transition-transform"></i>
+                    <span id="showAllBtnLabel">Tampilkan Semua Produk</span>
+                    <i class="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-1"></i>
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- VALUE PROPOSITIONS -->
+    <section class="py-16 bg-white border-y border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="font-serif text-3xl font-bold text-brand-dark">Mengapa Mempercayakan Pada napuy_florist?</h2>
+                <p class="text-gray-600 text-sm mt-2">Komitmen kami untuk menjaga kualitas ucapan & kehormatan Anda di setiap acara.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Pillar 1 -->
+                <div class="p-6 rounded-2xl bg-brand-bg border border-brand-beige/30 hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-brand-sage/10 text-brand-sagedark flex items-center justify-center text-2xl mb-4 group-hover:bg-brand-sage group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                    </div>
+                    <h3 class="font-serif text-lg font-bold text-brand-dark mb-2">Pengiriman Tepat Waktu</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Jaminan karangan bunga tiba 1–2 jam sebelum acara dimulai. Didukung kurir khusus yang berpengalaman dalam pengiriman papan bunga sehingga pesanan tiba dengan aman dan tepat waktu.
+                    </p>
+                </div>
+
+                <!-- Pillar 2 -->
+                <div class="p-6 rounded-2xl bg-brand-bg border border-brand-beige/30 hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-brand-sage/10 text-brand-sagedark flex items-center justify-center text-2xl mb-4 group-hover:bg-brand-sage group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-seedling"></i>
+                    </div>
+                    <h3 class="font-serif text-lg font-bold text-brand-dark mb-2">Hiasan Bunga Elegan nan Berkualitas</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Menggunakan hiasan berbentuk bunga dengan tampilan elegan, warna yang cerah, dan susunan yang rapi sehingga menghasilkan papan bunga yang menarik serta tetap tampil prima selama acara berlangsung.
+                    </p>
+                </div>
+
+                <!-- Pillar 3 -->
+                <div class="p-6 rounded-2xl bg-brand-bg border border-brand-beige/30 hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-brand-sage/10 text-brand-sagedark flex items-center justify-center text-2xl mb-4 group-hover:bg-brand-sage group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-camera-retro"></i>
+                    </div>
+                    <h3 class="font-serif text-lg font-bold text-brand-dark mb-2">Bukti Foto Pengiriman & Pemasangan</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Setiap pesanan dilengkapi dengan foto hasil akhir sebelum dikirim dan foto setelah papan terpasang di lokasi acara, sehingga Anda dapat memastikan pesanan telah diterima dengan baik.
+                    </p>
+                </div>
+
+                <!-- Pillar 4 -->
+                <div class="p-6 rounded-2xl bg-brand-bg border border-brand-beige/30 hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-brand-sage/10 text-brand-sagedark flex items-center justify-center text-2xl mb-4 group-hover:bg-brand-sage group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-sliders"></i>
+                    </div>
+                    <h3 class="font-serif text-lg font-bold text-brand-dark mb-2">Kustomisasi Sesuai Kebutuhan</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Bebas menyesuaikan ucapan, logo perusahaan, kombinasi warna papan, warna pita, hingga desain agar sesuai dengan identitas perusahaan maupun keinginan Anda.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS (ALUR PEMESANAN) -->
+    <section id="cara-pesan" class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-brand-sagedark text-xs font-bold uppercase tracking-widest bg-brand-beigelight px-3 py-1 rounded-full border border-brand-beige/40">Sangat Praktis</span>
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-brand-dark mt-2">Alur Pemesanan 3 Langkah Mudah</h2>
+                <p class="text-gray-600 text-sm mt-2">Tidak perlu repot datang ke toko. Cukup pesan via smartphone dalam kurun 3 menit.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 relative">
+                
+                <!-- Step 1 -->
+                <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-md relative text-center">
+                    <div class="w-12 h-12 rounded-full bg-brand-sagedark text-white font-serif font-bold text-xl flex items-center justify-center mx-auto mb-6 shadow-md">
+                        1
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-brand-dark mb-2">Pilih Desain & Momen</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Pilih produk dari katalog kami atau gunakan tombol Kustomisasi untuk mengajukan ukuran & gaya desain khusus.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-md relative text-center">
+                    <div class="w-12 h-12 rounded-full bg-brand-sagedark text-white font-serif font-bold text-xl flex items-center justify-center mx-auto mb-6 shadow-md">
+                        2
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-brand-dark mb-2">Isi Detail Teks & Alamat</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Lengkapi nama pengirim, nama penerima/acara, teks ucapan, serta jam pengiriman tujuan pada form otomatis WA.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-md relative text-center">
+                    <div class="w-12 h-12 rounded-full bg-brand-sagedark text-white font-serif font-bold text-xl flex items-center justify-center mx-auto mb-6 shadow-md">
+                        3
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-brand-dark mb-2">Proses & Bukti Foto Tiba</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Tim perangkai memproses bunga. Anda akan menerima foto sebelum berangkat dan foto konfirmasi tiba di lokasi.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS & REAL-PIC GALLERY -->
+    <section id="testimoni" class="py-16 bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-brand-sagedark text-xs font-bold uppercase tracking-widest bg-brand-beigelight px-3 py-1 rounded-full border border-brand-beige/40">Bukti Nyata Kepuasan</span>
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-brand-dark mt-2">Ulasan Pelanggan & Galeri Real-Pic</h2>
+                <p class="text-gray-600 text-sm mt-2">Diverifikasi dari ribuan kiriman papan bunga individu dan perusahaan ternama.</p>
+            </div>
+
+            <!-- Testimonials Grid -->
+            <div class="grid md:grid-cols-3 gap-6 mb-16">
+                
+                <!-- Review 1 -->
+                <div class="bg-brand-bg p-6 rounded-2xl border border-brand-beige/30 space-y-4">
+                    <div class="flex text-amber-400 text-sm">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-xs text-gray-700 italic leading-relaxed">
+                        "Pesat banget! Papan duka cita untuk pimpinan kami terpasang rapi di Rumah Duka Carolus dalam waktu kurang dari 3 jam. Laporan foto lengkap banget dari kurir."
+                    </p>
+                    <div class="flex items-center gap-3 pt-2 border-t border-gray-200/60">
+                        <div class="w-9 h-9 rounded-full bg-slate-800 text-white font-bold flex items-center justify-center text-xs">
+                            PT
+                        </div>
+                        <div>
+                            <div class="text-xs font-bold text-brand-dark">Hendra Wijaya</div>
+                            <div class="text-[10px] text-gray-500">Corporate Secretary - PT Mega Bank</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-brand-bg p-6 rounded-2xl border border-brand-beige/30 space-y-4">
+                    <div class="flex text-amber-400 text-sm">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-xs text-gray-700 italic leading-relaxed">
+                        "Papan bunga pernikahan sahabat saya desainnya estetik banget, beda sama florist pasaran. Bunganya tebel dan fresh. Terima kasih napuy_florist!"
+                    </p>
+                    <div class="flex items-center gap-3 pt-2 border-t border-gray-200/60">
+                        <div class="w-9 h-9 rounded-full bg-slate-800 text-white font-bold flex items-center justify-center text-xs">
+                            SP
+                        </div>
+                            <div class="text-xs font-bold text-brand-dark">Sisca Pratama</div>
+                            <div class="text-[10px] text-gray-500">Pembeli Perorangan (Wedding)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-brand-bg p-6 rounded-2xl border border-brand-beige/30 space-y-4">
+                    <div class="flex text-amber-400 text-sm">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-xs text-gray-700 italic leading-relaxed">
+                        "Sangat recommended untuk langganan kantor! Cetak logo perusahaan sangat rapi dan invoice transaksi langsung dikirim cepat. Mantap."
+                    </p>
+                    <div class="flex items-center gap-3 pt-2 border-t border-gray-200/60">
+                        <div class="w-9 h-9 rounded-full bg-emerald-800 text-white font-bold flex items-center justify-center text-xs">
+                            HR
+                        </div>
+                        <div>
+                            <div class="text-xs font-bold text-brand-dark">Budi Santoso</div>
+                            <div class="text-[10px] text-gray-500">GA Manager - Tech Startup Jakarta</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Real-Pic Gallery Grid -->
+            <div>
+                <h3 class="font-serif text-xl font-bold text-brand-dark mb-4 text-center">Galeri Hasil Foto di Lokasi Acara Nyata</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    
+                    <div onclick="openImageModal(this.dataset.image)"
+                         data-image="image/8napuy_florist400x120.webp"
+                         class="rounded-xl overflow-hidden h-48 cursor-pointer group relative">
+                        <img src="image/8napuy_florist400x120.webp"
+                             class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                        <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                        </div>
+                    </div>
+
+                    <div onclick="openImageModal(this.dataset.image)"
+                         data-image="image/7napuy_florist200x150.webp"
+                         class="rounded-xl overflow-hidden h-48 cursor-pointer group relative">
+                        <img src="image/7napuy_florist200x150.webp"
+                             class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                        <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                        </div>
+                    </div>
+
+                    <div onclick="openImageModal(this.dataset.image)"
+                         data-image="image/5napuy_florist(Bunga2titik).webp"
+                         class="rounded-xl overflow-hidden h-48 cursor-pointer group relative">
+                        <img src="image/5napuy_florist(Bunga2titik).webp"
+                             class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                        <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                        </div>
+                    </div>
+
+                    <div onclick="openImageModal(this.dataset.image)"
+                         data-image="image/2napuy_florist200x150.webp"
+                         class="rounded-xl overflow-hidden h-48 cursor-pointer group relative">
+                        <img src="image/2napuy_florist200x150.webp"
+                             class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                        <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                        </div>
+                    </div>
+
+                    <div onclick="openImageModal(this.dataset.image)"
+                         data-image="image/1napuy_florist200x150.webp"
+                         class="rounded-xl overflow-hidden h-48 cursor-pointer group relative">
+                        <img src="image/1napuy_florist200x150.webp"
+                             class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                        <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                        </div>
+                    </div>
+
+                    <div onclick="openImageModal(this.dataset.image)"
+                         data-image="image/3napuy_florist200x150.webp"
+                         class="rounded-xl overflow-hidden h-48 cursor-pointer group relative">
+                        <img src="image/3napuy_florist200x150.webp"
+                             class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                        <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                        </div>
+                    </div>
+
+                    <div onclick="openImageModal(this.dataset.image)"
+                         data-image="image/10napuy_florist200x120.webp"
+                         class="rounded-xl overflow-hidden h-48 cursor-pointer group relative">
+                        <img src="image/10napuy_florist200x120.webp"
+                             class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                        <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                        </div>
+                    </div>
+
+                    <div onclick="openImageModal(this.dataset.image)"
+                         data-image="image/13napuy_florist400x150.webp"
+                         class="rounded-xl overflow-hidden h-48 cursor-pointer group relative">
+                        <img src="image/13napuy_florist400x150.webp"
+                             class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                        <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                        </div>
+                    </div>
+
+                    <div onclick="openImageModal(this.dataset.image)"
+                         data-image="image/16napuy_florist(Bunga1titik).webp"
+                         class="rounded-xl overflow-hidden h-48 cursor-pointer group relative">
+                        <img src="image/16napuy_florist(Bunga1titik).webp"
+                             class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                        <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                        </div>
+                    </div>
+
+                    <div onclick="openImageModal(this.dataset.image)"
+                         data-image="image/napuyflorist1.webp"
+                         class="rounded-xl overflow-hidden h-48 cursor-pointer group relative">
+                        <img src="image/napuyflorist1.webp"
+                             class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                        <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                        </div>
+                    </div>
+
+                    <div onclick="openImageModal(this.dataset.image)"
+                         data-image="image/napuyflorist2.webp"
+                         class="rounded-xl overflow-hidden h-48 cursor-pointer group relative">
+                        <img src="image/napuyflorist2.webp"
+                             class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                        <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                        </div>
+                    </div>
+
+                    <div onclick="openImageModal(this.dataset.image)"
+                         data-image="image/napuyflorist3.webp"
+                         class="rounded-xl overflow-hidden h-48 cursor-pointer group relative">
+                        <img src="image/napuyflorist3.webp"
+                             class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                        <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                        </div>
+                    </div>
+
+                  <div onclick="openImageModal(this.dataset.image)"
+                         data-image="image/napuyflorist4.webp"
+                         class="rounded-xl overflow-hidden h-48 cursor-pointer group relative">
+                        <img src="image/napuyflorist4.webp"
+                             class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                        <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                        </div>
+                    </div>
+
+                  <div onclick="openImageModal(this.dataset.image)"
+                         data-image="image/napuyflorist5.webp"
+                         class="rounded-xl overflow-hidden h-48 cursor-pointer group relative">
+                        <img src="image/napuyflorist5.webp"
+                             class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                        <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                        </div>
+                    </div>
+
+                  <div onclick="openImageModal(this.dataset.image)"
+                         data-image="image/napuyflorist6.webp"
+                         class="rounded-xl overflow-hidden h-48 cursor-pointer group relative">
+                        <img src="image/napuyflorist6.webp"
+                             class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                        <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                        </div>
+                    </div>
+
+                  <div onclick="openImageModal(this.dataset.image)"
+                         data-image="image/napuyflorist7.webp"
+                         class="rounded-xl overflow-hidden h-48 cursor-pointer group relative">
+                        <img src="image/napuyflorist7.webp"
+                             class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                        <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                        </div>
+                    </div>
+                  
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- DELIVERY COVERAGE & FAQ -->
+    <section id="jangkauan" class="py-16 bg-brand-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- Coverage Checker -->
+                <div class="lg:col-span-5 bg-white p-8 rounded-3xl border border-brand-beige/40 shadow-md">
+                    <span class="text-brand-sagedark text-xs font-bold uppercase tracking-widest bg-brand-beigelight px-3 py-1 rounded-full border border-brand-beige/40">Cek Wilayah Delivery</span>
+                    <h2 class="font-serif text-2xl font-bold text-brand-dark mt-3 mb-2">Jangkauan Pengiriman</h2>
+                    <p class="text-xs text-gray-500 mb-6">napuy_florist melayani pengiriman papan bunga & florist langsung ke lokasi gedung, rumah duka, hotel, maupun kediaman pribadi.</p>
+
+                    <!-- Search Input for Area -->
+                    <div class="mb-4">
+                        <input type="text" id="areaSearch" oninput="checkAreaCoverage()" placeholder="Ketik nama kota / kecamatan Anda..." class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-brand-sage focus:outline-none">
+                    </div>
+
+                    <div id="areaResult" class="hidden p-3 rounded-xl mb-4 text-xs font-semibold"></div>
+
+                    <div class="space-y-2 text-xs">
+                        <div class="flex items-center justify-between p-2.5 rounded-lg bg-gray-50">
+                            <span class="font-bold text-gray-800"><i class="fa-solid fa-location-dot text-rose-500 mr-2"></i> Jakarta (Pusat, Selatan, Barat, Timur, Utara)</span>
+                            <span class="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded font-bold">Gratis Ongkir</span>
+                        </div>
+                        <div class="flex items-center justify-between p-2.5 rounded-lg bg-gray-50">
+                            <span class="font-bold text-gray-800"><i class="fa-solid fa-location-dot text-rose-500 mr-2"></i> Tangerang & Tangerang Selatan</span>
+                            <span class="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded font-bold">Gratis Ongkir</span>
+                        </div>
+                        <div class="flex items-center justify-between p-2.5 rounded-lg bg-gray-50">
+                            <span class="font-bold text-gray-800"><i class="fa-solid fa-location-dot text-rose-500 mr-2"></i> Depok & Bekasi City</span>
+                            <span class="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded font-bold">Gratis Ongkir</span>
+                        </div>
+                        <div class="flex items-center justify-between p-2.5 rounded-lg bg-gray-50">
+                            <span class="font-bold text-gray-800"><i class="fa-solid fa-location-dot text-amber-500 mr-2"></i> Bogor, Bandung, Surabaya (Cabang Mitra)</span>
+                            <span class="bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-bold">Sameday Available</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Accordion -->
+                <div class="lg:col-span-7">
+                    <h2 class="font-serif text-2xl md:text-3xl font-bold text-brand-dark mb-6">Pertanyaan Sering Diajukan (FAQ)</h2>
+                    
+                    <div class="space-y-4">
+                        <!-- FAQ 1 -->
+                        <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+                            <button onclick="toggleFaq(1)" class="w-full p-5 text-left font-bold text-sm text-brand-dark flex justify-between items-center hover:bg-gray-50">
+                                <span>Berapa lama proses pembuatan papan bunga dari pemesanan?</span>
+                                <i id="faq-icon-1" class="fa-solid fa-plus text-brand-sage transition-transform"></i>
+                            </button>
+                            <div id="faq-content-1" class="hidden px-5 pb-5 text-xs text-gray-600 leading-relaxed border-t border-gray-100 pt-3">
+                                Untuk pesanan standar memakan waktu 2 - 3 jam pengerjaan hingga siap kirim. Untuk pesanan express / duka cita darurat, kami menyediakan tim fast-track dengan opsi pengiriman dalam 2 jam.
+                            </div>
+                        </div>
+
+                        <!-- FAQ 2 -->
+                        <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+                            <button onclick="toggleFaq(2)" class="w-full p-5 text-left font-bold text-sm text-brand-dark flex justify-between items-center hover:bg-gray-50">
+                                <span>Apakah bisa menerbitkan Invoice & Faktur Pajak untuk B2B Corporate?</span>
+                                <i id="faq-icon-2" class="fa-solid fa-plus text-brand-sage transition-transform"></i>
+                            </button>
+                            <div id="faq-content-2" class="hidden px-5 pb-5 text-xs text-gray-600 leading-relaxed border-t border-gray-100 pt-3">
+                                Ya, tentu! napuy_florist secara rutin melayani kebutuhan B2B instansi & korporat. Kami dapat menerbitkan Invoice resmi, Kwitansi cap toko, serta dokumen pendukung pembayaran kantor.
+                            </div>
+                        </div>
+
+                        <!-- FAQ 3 -->
+                        <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+                            <button onclick="toggleFaq(3)" class="w-full p-5 text-left font-bold text-sm text-brand-dark flex justify-between items-center hover:bg-gray-50">
+                                <span>Bagaimana saya tahu bahwa papan bunga sudah sampai di tujuan?</span>
+                                <i id="faq-icon-3" class="fa-solid fa-plus text-brand-sage transition-transform"></i>
+                            </button>
+                            <div id="faq-content-3" class="hidden px-5 pb-5 text-xs text-gray-600 leading-relaxed border-t border-gray-100 pt-3">
+                                Kami memberikan Layanan LPP (Laporan Foto Penerimaan). Kurir kami wajib mengambil foto produk siap berangkat dan foto papan berdiri tegak di lokasi acara lalu dikirimkan langsung ke WhatsApp Anda.
+                            </div>
+                        </div>
+
+                        <!-- FAQ 4 -->
+                        <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+                            <button onclick="toggleFaq(4)" class="w-full p-5 text-left font-bold text-sm text-brand-dark flex justify-between items-center hover:bg-gray-50">
+                                <span>Apakah bisa menyisipkan logo perusahaan pada papan bunga?</span>
+                                <i id="faq-icon-4" class="fa-solid fa-plus text-brand-sage transition-transform"></i>
+                            </button>
+                            <div id="faq-content-4" class="hidden px-5 pb-5 text-xs text-gray-600 leading-relaxed border-t border-gray-100 pt-3">
+                                Sangat bisa! Anda cukup mengirimkan file logo perusahaan berformat PNG/JPG transparan via WhatsApp, dan tim perangkai kami akan mencetak sticker/banner logo untuk ditempatkan secara profesional di bagian atas papan.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-charcoal text-white pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-gray-800">
+                
+                <!-- Brand Info -->
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full overflow-hidden shadow-md group-hover:scale-105 transition-transform bg-white">
+                            <img
+                                src="logonapuy_floristpng.png"
+                                alt="Napuy Florist Logo"
+                                class="w-full h-full object-cover">
+                        </div>
+                        <span class="font-signature text-3xl font-normal text-white">napuy<span class="text-brand-sage">_florist</span></span>
+                    </div>
+                    <p class="text-xs text-gray-400 leading-relaxed max-w-sm">
+                        Marketplace & workshop florist terpercaya menyediakan papan bunga dan standing flower kustom untuk seluruh kebutuhan momen bahagia maupun duka di Indonesia.
+                    </p>
+                    <div class="flex gap-3 text-lg pt-2">
+                        <a href="https://www.instagram.com/napuy_florist" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-sage transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@napuy_florist" class="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-sage transition-colors"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="https://wa.me/6288809329129?text=Halo%20napuy_florist,%20saya%20ingin%20konsultasi%20pemesanan%20bunga" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-sage transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <!-- Navigation Quick Links -->
+                <div>
+                    <h4 class="font-serif text-sm font-bold text-white mb-4 uppercase tracking-wider">Kategori Produk</h4>
+                    <ul class="space-y-2.5 text-xs text-gray-400">
+                        <li><a href="#katalog" onclick="filterCatalogByOccasion('wedding')" class="hover:text-white transition-colors">Papan Bunga Wedding</a></li>
+                        <li><a href="#katalog" onclick="filterCatalogByOccasion('turut berduka cita')" class="hover:text-white transition-colors">Papan Duka Cita</a></li>
+                        <li><a href="#katalog" onclick="filterCatalogByOccasion('selamat & sukses')" class="hover:text-white transition-colors">Grand Opening Board</a></li>
+                        <li><a href="#katalog" onclick="filterCategory('standing')" class="hover:text-white transition-colors">Standing Flower Megah</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact & CS -->
+                <div>
+                    <h4 class="font-serif text-sm font-bold text-white mb-4 uppercase tracking-wider">Kontak & Layanan</h4>
+                    <ul class="space-y-2.5 text-xs text-gray-400">
+                        <li><i class="fa-brands fa-whatsapp mr-2 text-emerald-400"></i> CS WhatsApp: 0888-0932-9129</li>
+                        <li><i class="fa-solid fa-clock mr-2 text-brand-beige"></i> Jam Operasional: 24 Jam Nonstop</li>
+                        <li><i class="fa-solid fa-envelope mr-2 text-brand-beige"></i> Email: napuyflorist@gmail.com</li>
+                        <li><i class="fa-solid fa-building mr-2 text-brand-beige"></i> Workshop: Jl. H. Kian No.27, Mekarsari, Kec. Cimanggis, Kota Depok, Jawa Barat 16452</li>
+                    </ul>
+                </div>
+
+                <!-- Corporate B2B -->
+                <div>
+                    <h4 class="font-serif text-sm font-bold text-white mb-4 uppercase tracking-wider">Layanan Korporat</h4>
+                    <p class="text-xs text-gray-400 mb-3">Terbuka untuk kerja sama dengan perusahaan, instansi, organisasi, dan event organizer. Tersedia layanan pengiriman papan bunga secara berkala dengan invoice resmi dan pelayanan profesional.</p>
+                    <a href="https://wa.me/6288809329129?text=Halo%20napuy_florist,%20saya%20ingin%20mengajukan%20kerjasama%20B2B%20Corporate" target="_blank" class="inline-block px-4 py-2 rounded-xl bg-brand-sage text-white text-xs font-bold hover:bg-brand-sagedark transition-colors">
+                    🤝 Konsultasi Kerja Sama<i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i>
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-gray-500 gap-4">
+                <div>
+                    &copy; 2026 napuy_florist Indonesia. All Rights Reserved. Hak Cipta Dilindungi Undang-Undang.
+                </div>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:underline">Kebijakan Privasi</a>
+                    <a href="#" class="hover:underline">Syarat & Ketentuan</a>
+                    <a href="#" class="hover:underline">Garansi Pengiriman</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MOBILE STICKY BOTTOM ACTION BAR -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-gray-200 p-3 z-30 md:hidden flex items-center justify-between gap-3 shadow-lg">
+        <button onclick="openCustomizerModal()" class="flex-1 py-2.5 rounded-xl border border-brand-sage text-brand-sagedark text-xs font-bold flex items-center justify-center gap-1.5">
+            <i class="fa-solid fa-wand-magic-sparkles text-brand-sage"></i>
+            <span>Simulasi Ucapan</span>
+        </button>
+        <a href="https://wa.me/6288809329129?text=Halo%20napuy_florist,%20saya%20ingin%20memesan%20rangkaian%20bunga" target="_blank" class="flex-1 py-2.5 rounded-xl bg-emerald-600 text-white text-xs font-bold flex items-center justify-center gap-2 shadow-md">
+            <i class="fa-brands fa-whatsapp text-base"></i>
+            <span>Pesan Cepat WA</span>
+        </a>
+    </div>
+
+    <!-- MODAL 1: ORDER & CUSTOMIZATION MODAL -->
+    <div id="customizerModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full max-h-[90vh] overflow-y-auto p-6 md:p-8 relative shadow-2xl">
+            <button onclick="closeCustomizerModal()" class="absolute top-5 right-5 text-gray-400 hover:text-gray-700 text-xl w-8 h-8 flex items-center justify-center rounded-full bg-gray-100">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="mb-6">
+                <span class="text-brand-sagedark text-[10px] font-bold uppercase tracking-widest bg-brand-beigelight px-2.5 py-1 rounded-full">Formulir Pemesanan</span>
+                <h3 class="font-serif text-2xl font-bold text-brand-dark mt-2" id="modalProductTitle">Form Kustomisasi Pesanan Bunga</h3>
+                <p class="text-xs text-gray-500 mt-1">Lengkapi detail ucapan Anda. Sistem akan memformat rincian pesanan langsung ke WhatsApp CS napuy_florist.</p>
+            </div>
+
+            <form id="orderForm" onsubmit="submitOrderModal(event)" class="space-y-4">
+                <input type="hidden" id="modalSelectedProductName" value="Kustomisasi Bebas">
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Momen Acara / Kategori</label>
+                    <select id="modalOccasion" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-xs focus:ring-2 focus:ring-brand-sage focus:outline-none">
+                        <option value="Wedding / Pernikahan">💒 Wedding / Pernikahan</option>
+                        <option value="Duka Cita / Belasungkawa">🕊️ Duka Cita / Belasungkawa</option>
+                        <option value="Grand Opening / Ucapan Selamat">🎉 Grand Opening / Ucapan Selamat</option>
+                    </select>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Nama Pemesan</label>
+                        <input type="text" id="modalOrdererName" required placeholder="Nama Anda" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-xs focus:ring-2 focus:ring-brand-sage focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">No. WhatsApp</label>
+                        <input type="tel" id="modalOrdererPhone" required placeholder="0812xxxx" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-xs focus:ring-2 focus:ring-brand-sage focus:outline-none">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Teks Ucapan Utama Papan Bunga</label>
+                    <textarea id="modalBoardText" rows="2" required placeholder="Contoh: Happy Wedding Bagas & Anisa / Turut Berduka Cita Atas Meninggalnya..." class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-xs focus:ring-2 focus:ring-brand-sage focus:outline-none"></textarea>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Nama Pengirim (Cetak Pada Papan)</label>
+                    <input type="text" id="modalSenderText" required placeholder="Contoh: Direksi & Staf PT. Sentosa Utama" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-xs focus:ring-2 focus:ring-brand-sage focus:outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Alamat Lengkap Pengiriman</label>
+                    <textarea id="modalAddress" rows="2" required placeholder="Nama Gedung / Rumah Duka / Jalan, No. Rumah, Kota" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-xs focus:ring-2 focus:ring-brand-sage focus:outline-none"></textarea>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Tanggal & Jam Kirim Tiba di Lokasi</label>
+                    <input type="text" id="modalDeliveryDate" required placeholder="Contoh: Besok, 24 Mei - Sebelum Jam 10 Pagi" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-xs focus:ring-2 focus:ring-brand-sage focus:outline-none">
+                </div>
+
+                <div class="pt-2">
+                    <button type="submit" class="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-lg transition-all flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>Kirim Rincian Pesanan ke WhatsApp</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL 2: IMAGE ZOOM MODAL -->
+    <div id="imageModal" class="fixed inset-0 bg-black/80 z-50 hidden flex items-center justify-center p-4" onclick="closeImageModal()">
+        <div class="relative max-w-3xl w-full max-h-[90vh] flex justify-center items-center">
+            <img id="imageModalTarget" src="" class="max-w-full max-h-[85vh] rounded-2xl object-contain border-4 border-white shadow-2xl">
+            <button onclick="closeImageModal()" class="absolute -top-10 right-0 text-white text-2xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Mock Products Data
+        const productsData = [
+            {
+                id: 1,
+                title: "💍Asemdoyong - Papan Bunga Wedding",
+                category: "papan",
+                occasion: "wedding",
+                price: "Rp 750.000",
+                rating: 5.0,
+                sold: 340,
+                image: "image/1napuy_florist200x150.webp",
+                alt: "Papan bunga dengan bunga artificial premium karya napuy florist",
+                description: "Papan bunga ukuran 200 × 150 cm 4 titik bunga dengan desain elegan dan ucapan custom."
+            },
+            {
+                id: 2,
+                title: "🎉Jebed - Papan Bunga Selamat & Sukses",
+                category: "papan",
+                occasion: "selamat & sukses",
+                price: "Rp 1.500.000",
+                rating: 5.0,
+                sold: 520,
+                image: "image/2napuy_florist200x150.webp",
+                alt: "Papan bunga dengan bunga artificial premium karya napuy florist",
+                description: "Papan bunga ukuran 200 × 150 cm full bunga dengan desain eksklusif dan elegan."
+            },
+            {
+                id: 3,
+                title: "💍Kejambon - Papan Bunga Wedding",
+                category: "papan",
+                occasion: "wedding",
+                price: "Rp 600.000",
+                rating: 4.9,
+                sold: 645,
+                image: "image/3napuy_florist200x150.webp",
+                alt: "Papan bunga dengan bunga artificial premium karya napuy florist",
+                description: "Papan bunga ukuran 200 x 150 cm 2 titik bunga dengan sentuhan elegan untuk momen spesial."
+            },
+            {
+                id: 4,
+                title: "🤍Penggarit - Standing Flower Turut Berduka Cita",
+                category: "standing",
+                occasion: "turut berduka cita",
+                price: "Rp 1.250.000",
+                rating: 4.9,
+                sold: 190,
+                image: "image/5napuy_florist(Bunga2titik).webp",
+                alt: "Papan bunga dengan bunga artificial premium karya napuy florist",
+                description: "Standing tripod kayu/besi mewah 2 titik bunga sebagai ungkapan belasungkawa yang penuh penghormatan."
+            },
+            {
+                id: 5,
+                title: "🎉Banjardawa - Papan Bunga Selamat & Sukses",
+                category: "papan",
+                occasion: "selamat & sukses",
+                price: "Rp 1.500.000",
+                rating: 4.9,
+                sold: 420,
+                image: "image/7napuy_florist200x150.webp",
+                alt: "Papan bunga dengan bunga artificial premium karya napuy florist",
+                description: "Papan bunga ukuran 200 x 150 cm 6 titik bunga dalam balutan papan bunga premium yang berkesan."
+            },
+            {
+                id: 6,
+                title: "🌹Semingkir - Papan Bunga Jumbo Turut Berduka Cita",
+                category: "papan",
+                occasion: "turut berduka cita",
+                price: "Rp 1.500.000",
+                rating: 5.0,
+                sold: 215,
+                image: "image/8napuy_florist400x120.webp",
+                alt: "Papan bunga dengan bunga artificial premium karya napuy florist",
+                description: "Papan bunga ukuran 400 × 120 cm 4 titik bunga dengan desain eksklusif sebagai bentuk penghormatan terakhir."
+            },
+            {
+                id: 7,
+                title: "🎉Pegiringan - Papan Bunga Selamat & Sukses",
+                category: "papan",
+                occasion: "selamat & sukses",
+                price: "Rp 550.000",
+                rating: 4.9,
+                sold: 420,
+                image: "image/10napuy_florist200x120.webp",
+                alt: "Papan bunga dengan bunga artificial premium karya napuy florist",
+                description: "Papan bunga ukuran 200 × 120 cm 2 titik bunga untuk ucapan promosi jabatan, pembukaan usaha, maupun peresmian."
+            },
+            {
+                id: 8,
+                title: "💍Bantarbolang - Papan Bunga Jumbo Wedding",
+                category: "papan",
+                occasion: "wedding",
+                price: "Rp 1.700.000",
+                rating: 5.0,
+                sold: 215,
+                image: "image/13napuy_florist400x150.webp",
+                alt: "Papan bunga dengan bunga artificial premium karya napuy florist",
+                description: "Papan bunga ukuran 400 × 150 cm 5 titik bunga berdesain premium yang siap memperindah setiap acara pernikahan."
+            },
+            {
+                id: 9,
+                title: "🤍Pulosari - Standing Flower Turut Berduka Cita",
+                category: "standing",
+                occasion: "turut berduka cita",
+                price: "Rp 800.000",
+                rating: 4.9,
+                sold: 310,
+                image: "image/16napuy_florist(Bunga1titik).webp",
+                alt: "Papan bunga dengan bunga artificial premium karya napuy florist",
+                description: "Standing tripod kayu/besi mewah dengan desain premium untuk menyampaikan doa dan simpati dengan tulus."
+            }
+        ];
+
+        let activeCategoryFilter = 'all';
+        let activeOccasionFilter = 'all';
+
+        // Render products on load
+        window.onload = function() {
+            renderProducts();
+        };
+
+        function renderProducts() {
+            const grid = document.getElementById('productGrid');
+            const showAllLabel = document.getElementById('showAllBtnLabel');
+            grid.innerHTML = '';
+
+            // Dynamic label update
+            if (showAllLabel) {
+                showAllLabel.innerText = "Tampilkan Semua Produk";
+            }
+
+            const filtered = productsData.filter(item => {
+                const matchCategory = (activeCategoryFilter === 'all' || item.category === activeCategoryFilter);
+                const matchOccasion = (activeOccasionFilter === 'all' || item.occasion === activeOccasionFilter);
+                return matchCategory && matchOccasion;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-12 bg-white rounded-2xl border border-gray-100">
+                        <i class="fa-solid fa-flower text-4xl text-gray-300 mb-3"></i>
+                        <p class="text-gray-500 font-bold text-sm">Tidak ada produk yang cocok dengan filter yang dipilih.</p>
+                        <button onclick="resetFilters()" class="mt-3 text-xs text-brand-sage font-bold underline">Tampilkan Semua Produk</button>
+                    </div>
+                `;
+                return;
+            }
+
+            filtered.forEach(product => {
+                const cardHtml = `
+                    <div class="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col group">
+                        <div class="relative h-56 overflow-hidden">
+                            <img src="${product.image}" alt="${product.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-full text-[11px] font-bold text-amber-500 shadow-sm flex items-center gap-1">
+                                <i class="fa-solid fa-star"></i> ${product.rating} (${product.sold})
+                            </div>
+                        </div>
+
+                        <div class="p-5 flex-1 flex flex-col justify-between">
+                            <div>
+                                <span class="text-[10px] font-bold uppercase tracking-wider text-brand-sage bg-brand-beigelight/60 px-2 py-0.5 rounded">
+                                    ${product.category.toUpperCase()}
+                                </span>
+                                <h3 class="font-serif font-bold text-base text-brand-dark mt-2 line-clamp-1 group-hover:text-brand-sage transition-colors">
+                                    ${product.title}
+                                </h3>
+                                <p class="text-xs text-gray-500 mt-1 line-clamp-2 leading-relaxed">
+                                    ${product.description}
+                                </p>
+                            </div>
+
+                            <div class="pt-4 mt-4 border-t border-gray-100 flex items-center justify-between">
+                                <div>
+                                    <span class="text-[10px] text-gray-400 block">Mulai dari</span>
+                                    <span class="font-bold text-brand-dark text-base">${product.price}</span>
+                                </div>
+                                <button onclick="openProductCustomizer('${product.title}')" class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition-all flex items-center gap-1.5 shadow-sm">
+                                    <i class="fa-brands fa-whatsapp text-sm"></i> Pesan
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += cardHtml;
+            });
+        }
+
+        // Category Filter Logic
+        function filterCategory(cat) {
+            activeCategoryFilter = cat;
+            
+            // Update active button styles
+            document.querySelectorAll('.cat-tab').forEach(btn => {
+                btn.classList.remove('bg-brand-sagedark', 'text-white', 'shadow-sm');
+                btn.classList.add('text-gray-600');
+            });
+
+            const activeBtn = document.getElementById(`tab-${cat}`);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-brand-sagedark', 'text-white', 'shadow-sm');
+                activeBtn.classList.remove('text-gray-600');
+            }
+
+            renderProducts();
+        }
+
+        // Action when clicking "Tampilkan Semua Produk"
+        function showAllProductsAction() {
+            activeCategoryFilter = 'all';
+            activeOccasionFilter = 'all';
+            filterCategory('all');
+            document.getElementById('katalog').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Occasion Filter Logic from Occasion Cards
+        function filterCatalogByOccasion(occ) {
+            activeOccasionFilter = occ;
+            renderProducts();
+            
+            // Scroll smoothly to catalog
+            document.getElementById('katalog').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function resetFilters() {
+            activeCategoryFilter = 'all';
+            activeOccasionFilter = 'all';
+            filterCategory('all');
+        }
+
+        // Catalog live search
+        function searchCatalog() {
+            const query = document.getElementById('catalogSearch').value.toLowerCase();
+            const cards = document.querySelectorAll('#productGrid > div');
+            
+            cards.forEach(card => {
+                const title = card.querySelector('h3').innerText.toLowerCase();
+                const desc = card.querySelector('p').innerText.toLowerCase();
+                if (title.includes(query) || desc.includes(query)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Live Board Simulator Updating Logic
+        function updateBoardPreview() {
+            const header = document.getElementById('simHeader').value;
+            const title = document.getElementById('simTitle').value || 'BAGAS & ANISA';
+            const sender = document.getElementById('simSender').value || 'DIREKSI & STAF';
+
+            document.getElementById('previewHeader').innerText = header;
+            document.getElementById('previewTitle').innerText = title;
+            document.getElementById('previewSender').innerText = sender;
+        }
+
+        function setBoardTheme(theme) {
+            const board = document.getElementById('boardContainer');
+            board.className = "w-full max-w-xl aspect-[16/10] rounded-2xl p-6 sm:p-8 flex flex-col justify-between items-center text-center shadow-2xl transition-all duration-500 relative border-8 border-amber-800 ";
+
+            if (theme === 'navy') {
+                board.className += "bg-gradient-to-b from-blue-950 to-slate-900 text-amber-200";
+            } else if (theme === 'maroon') {
+                board.className += "bg-gradient-to-b from-rose-950 to-red-900 text-amber-100";
+            } else if (theme === 'emerald') {
+                board.className += "bg-gradient-to-b from-emerald-950 to-teal-900 text-emerald-100";
+            } else if (theme === 'dark') {
+                board.className += "bg-gradient-to-b from-gray-950 to-black text-gray-200";
+            }
+        }
+
+        function sendSimulatedOrderWA() {
+            const header = document.getElementById('simHeader').value;
+            const title = document.getElementById('simTitle').value;
+            const sender = document.getElementById('simSender').value;
+
+            const text = `Halo napuy_florist, saya ingin memesan papan bunga sesuai preview live simulator:%0A%0A- Jenis Ucapan: ${header}%0A- Untuk / Penerima: ${title}%0A- Dari / Pengirim: ${sender}%0A%0AMohon info ketersediaan stok & total harganya.`;
+            window.open(`https://wa.me/6288809329129?text=${text}`, '_blank');
+        }
+
+        // Customizer Modal Logic
+        function openCustomizerModal() {
+            document.getElementById('modalProductTitle').innerText = "Form Kustomisasi Pesanan Bunga";
+            document.getElementById('modalSelectedProductName').value = "Kustomisasi Bebas";
+            document.getElementById('customizerModal').classList.remove('hidden');
+        }
+
+        function openProductCustomizer(productName) {
+            document.getElementById('modalProductTitle').innerText = `Pesan: ${productName}`;
+            document.getElementById('modalSelectedProductName').value = productName;
+            document.getElementById('customizerModal').classList.remove('hidden');
+        }
+
+        function closeCustomizerModal() {
+            document.getElementById('customizerModal').classList.add('hidden');
+        }
+
+        function submitOrderModal(e) {
+            e.preventDefault();
+            const product = document.getElementById('modalSelectedProductName').value;
+            const occasion = document.getElementById('modalOccasion').value;
+            const name = document.getElementById('modalOrdererName').value;
+            const phone = document.getElementById('modalOrdererPhone').value;
+            const boardText = document.getElementById('modalBoardText').value;
+            const senderText = document.getElementById('modalSenderText').value;
+            const address = document.getElementById('modalAddress').value;
+            const date = document.getElementById('modalDeliveryDate').value;
+
+            const waMessage = `Halo napuy_florist, saya ingin memesan karangan bunga berikut:%0A%0A*Produk:* ${product}%0A*Kategori Momen:* ${occasion}%0A*Nama Pemesan:* ${name} (${phone})%0A----------------------------%0A*Teks Ucapan Papan:* ${boardText}%0A*Nama Pengirim Papan:* ${senderText}%0A*Alamat Kirim:* ${address}%0A*Tanggal & Jam Kirim:* ${date}%0A%0AMohon diproses dan dikirimkan invoice resminya. Terima kasih!`;
+
+            window.open(`https://wa.me/6288809329129?text=${waMessage}`, '_blank');
+            closeCustomizerModal();
+        }
+
+        // Image Modal Logic
+        function openImageModal(src) {
+            document.getElementById('imageModalTarget').src = src;
+            document.getElementById('imageModal').classList.remove('hidden');
+        }
+
+        function closeImageModal() {
+            document.getElementById('imageModal').classList.add('hidden');
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+        document.getElementById('mobileMenuBtn').addEventListener('click', toggleMobileMenu);
+
+        // Coverage Checker Function
+        function checkAreaCoverage() {
+            const query = document.getElementById('areaSearch').value.toLowerCase();
+            const resultDiv = document.getElementById('areaResult');
+
+            if (query.trim() === '') {
+                resultDiv.classList.add('hidden');
+                return;
+            }
+
+            const freeOngkirAreas = ['jakarta', 'jaksel', 'jakbar', 'jaktim', 'jakpus', 'jakut', 'tangerang', 'tangsel', 'depok', 'bekasi', 'kebon jeruk', 'bsd', 'bintaro', 'kelapa gading'];
+            
+            const isCovered = freeOngkirAreas.some(area => query.includes(area));
+
+            resultDiv.classList.remove('hidden', 'bg-emerald-100', 'text-emerald-800', 'bg-amber-100', 'text-amber-800');
+
+            if (isCovered) {
+                resultDiv.classList.add('bg-emerald-100', 'text-emerald-800');
+                resultDiv.innerHTML = `<i class="fa-solid fa-circle-check mr-1"></i> Area <strong>"${query}"</strong> masuk dalam jangkauan <strong>GRATIS ONGKIR & Sameday Delivery</strong>!`;
+            } else {
+                resultDiv.classList.add('bg-amber-100', 'text-amber-800');
+                resultDiv.innerHTML = `<i class="fa-solid fa-truck-ramp-box mr-1"></i> Area <strong>"${query}"</strong> dapat dilayani via cabang ekspedisi florist mitra kami. Hubungi CS untuk ketersediaan jam kirim.`;
+            }
+        }
+
+        // FAQ Toggle Logic
+        function toggleFaq(id) {
+            const content = document.getElementById(`faq-content-${id}`);
+            const icon = document.getElementById(`faq-icon-${id}`);
+
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.classList.remove('fa-plus');
+                icon.classList.add('fa-minus');
+            } else {
+                content.classList.add('hidden');
+                icon.classList.remove('fa-minus');
+                icon.classList.add('fa-plus');
+            }
+        }
+    </script>
+
+</body>
+</html>
